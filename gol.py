@@ -17,6 +17,9 @@ def tick(world):
             # rule 2 & 4 combined
             if count == 3:
                 world[x][y] = 1
+            # rule 3: more than 3 neighbours => cell dies
+            if count > 3:
+                world[x][y] = 0
 
 def all_cells_are_dead(world):
     for x in xrange(XSIZE):

@@ -24,6 +24,20 @@ def test_cell_with_two_or_three_neighbours_lives():
     assert world[x + 1][y - 1] == 1
     assert world[x + 1][y + 1] == 1
 
+def test_cell_with_more_than_three_neighbours_dies():
+    world = create_world(XSIZE, YSIZE)
+    x = 10
+    y = 10
+    world[x - 1][y] = 1
+    world[x + 1][y] = 1
+    world[x][y - 1] = 1
+    world[x][y + 1] = 1
+    #  1
+    # 1x1
+    #  1
+    tick(world)
+    assert world[x][y] == 0
+
 def test_dead_cell_stay_dead():
     world = create_world(XSIZE, YSIZE)
     tick(world)
